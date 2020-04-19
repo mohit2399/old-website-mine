@@ -1,12 +1,10 @@
 <!doctype html>
-
 <html>
-  <head>
     <meta charset="utf-8">
-    <title>Emscripten:Life</title>
-  </head>
+      <title>Conway's Game Of Life</title>
+      <h3>This is the First thing I created using Emscripten. Deserves to be here. Done using Emscripten. Thanks.</h3>
   <body>
-    <canvas id="myCanvas" tabindex="0"></canvas>
+    <canvas id="myCanvas" tabindex="0" ></canvas>
     <p id = 'tip'>Loading WebAssembly...</p>
     <script>
     Module = {};
@@ -57,6 +55,6 @@
       Module.ccall('on_key_up', 'null', ['string'], [event.key]);
     }
     </script>
-    <script src="life.js"></script>
+    <script src="game.js"></script>
   </body>
 </html>
