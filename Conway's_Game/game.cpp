@@ -35,6 +35,14 @@ void create_seeds() {
 	}
 }
 
+EM_PORT_API(void) reset() {
+	create_seeds();
+}
+
+EM_PORT_API(void) pause() {
+	pausing=!pausing;
+}
+
 EM_PORT_API(void) init_env(int w, int h, int s) {
 	if (cells0) free(cells0);
 	if (cells1) free(cells1);

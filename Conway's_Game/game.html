@@ -4,8 +4,10 @@
       <title>Conway's Game Of Life</title>
       <h3>This is the First thing I created using Emscripten. Deserves to be here. Done using Emscripten. Thanks.</h3>
   <body>
-    <canvas id="myCanvas" tabindex="0" ></canvas>
+    <canvas id="myCanvas" tabindex="0" style="border: 10px; border-color: blueviolet;"></canvas>
     <p id = 'tip'>Loading WebAssembly...</p>
+    <input id="myButton1" type="button" value="Pause" onclick="changeName()"></input>
+    <input id="myButton2" type="button" value="Reset" onclick="resetCanvas()"></input>
     <script>
     Module = {};
     Module.onRuntimeInitialized = function() {
@@ -21,8 +23,15 @@
 
       window.requestAnimationFrame(update);
       var tip = document.getElementById('tip');
-      tip.innerHTML = "Press 'p' to pause/resume, 'r' to reset. Click cell to invert it's state while pausing.";
-    }
+      tip.innerHTML = "You can use Keyboard for pressing keys or you can click on the buttons below. Press 'p' to pause/resume, 'r' to reset. Click cell to invert it's state while pausing. ";
+
+      var mbutton1 = document.getElementById("myButton1");
+      mbutton1.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+        console.log("enter pressed");
+        }
+        console.log("default");
+    })}
 
     function update() {
       var buf_addr = Module._step();
@@ -54,6 +63,18 @@
 	  function onKeyUp(event) {
       Module.ccall('on_key_up', 'null', ['string'], [event.key]);
     }
+
+    function changeName(){
+      var elem = document.getElementById("myButton1");
+      if (elem.value=="Pause") elem.value = "Resume";
+      else elem.value = "Pause";
+      Module._pause();
+    }
+
+    function resetCanvas(){
+      Module._reset(); 
+    }
+  
     </script>
     <script src="game.js"></script>
   </body>
