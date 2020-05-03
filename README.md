@@ -8,4 +8,4 @@ They are listed below.
 1. [Conway's Game of Life](Conway's_Game/game.html)
 2. Magic Calculator
 3. Virtual Drum Set 
-4. [Tetris](Tetris/Public/index.html)
+4. [Tetris](Tetris/public/index.html)
